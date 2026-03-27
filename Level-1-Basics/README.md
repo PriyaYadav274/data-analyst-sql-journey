@@ -47,6 +47,3 @@ ORDER BY salary DESC
 LIMIT 3;
 ```
 
-## 🚀 Author
-
-Aspiring Data Analyst learning SQL step by step.
