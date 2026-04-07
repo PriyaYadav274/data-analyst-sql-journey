@@ -37,3 +37,28 @@ SELECT
 FROM
     Orders
 GROUP BY customer_id;
+
+-- 6. Find lowest order amount per customer
+SELECT 
+    customer_id, MIN(amount)
+FROM
+    Orders
+GROUP BY customer_id;
+
+-- 7. Find total number of customers in each city
+SELECT 
+    city, COUNT(customer_id)
+FROM
+    Customers
+GROUP BY city;
+
+-- 8. Find average product price per category
+SELECT 
+    category, AVG(price)
+FROM
+    Products
+GROUP BY category;
+
+
+
+
