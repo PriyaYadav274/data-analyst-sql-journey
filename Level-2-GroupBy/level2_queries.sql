@@ -59,6 +59,45 @@ FROM
     Products
 GROUP BY category;
 
+-- 9. Find total products in each category
+SELECT 
+    category, COUNT(product_id)
+FROM
+    Products
+GROUP BY category;
+
+-- 10. Find max and min product price per category
+SELECT 
+    category, MAX(price), MIN(price)
+FROM
+    Products
+GROUP BY category;
+
+-- 11. Find total quantity sold per product
+SELECT 
+    product_id, SUM(quantity)
+FROM
+    Order_Items
+GROUP BY product_id;
+
+-- 12. Find total revenue per product (price × quantity)
+SELECT 
+    p.product_id, SUM(p.price * o.quantity) AS revenue
+FROM
+    Products AS p
+        INNER JOIN
+    Order_Items AS o ON p.product_id = o.product_id
+GROUP BY product_id;
+
+
+
+
+
+
+
+
+
+
 
 
 
