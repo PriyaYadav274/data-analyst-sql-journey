@@ -89,6 +89,42 @@ FROM
     Order_Items AS o ON p.product_id = o.product_id
 GROUP BY product_id;
 
+-- 13. Find total orders per date
+SELECT 
+    order_date, COUNT(order_id)
+FROM
+    Orders
+GROUP BY order_date;
+
+-- 14. Find average order value per date
+SELECT 
+    order_date, AVG(amount)
+FROM
+    Orders
+GROUP BY order_date;
+
+-- 15. Find total sales per month
+SELECT 
+    MONTH(order_date) AS Month, SUM(amount) AS Total_Sales
+FROM
+    Orders
+GROUP BY MONTH(order_date);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
