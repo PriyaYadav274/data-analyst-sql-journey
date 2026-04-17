@@ -111,7 +111,30 @@ FROM
 GROUP BY MONTH(order_date);
 
 
+--  PART 2: HAVING 
+-- 16. Find customers who made more than 5 orders
+SELECT 
+    customer_id, COUNT(order_id)
+FROM
+    Orders
+GROUP BY customer_id
+HAVING COUNT(order_id) > 5; 
 
+-- 17. Find cities with more than 3 customers
+SELECT 
+    city, COUNT(customer_id)
+FROM
+    Customers
+GROUP BY city
+HAVING COUNT(customer_id) > 3;
+
+-- 18. Find products sold more than 100 times
+SELECT 
+    product_id, SUM(quantity)
+FROM
+    Order_Items
+GROUP BY product_id
+HAVING SUM(quantity) > 100;
 
 
 
