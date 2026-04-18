@@ -136,7 +136,21 @@ FROM
 GROUP BY product_id
 HAVING SUM(quantity) > 100;
 
+-- 19. Find categories with average price > 500
+SELECT 
+    category, AVG(price)
+FROM
+    Products
+GROUP BY category
+HAVING AVG(price) > 500;
 
+-- 20. Find customers whose total purchase > 10,000
+SELECT 
+    customer_id, SUM(amount)
+FROM
+    Orders
+GROUP BY customer_id
+HAVING SUM(amount) > 10000;
 
 
 
