@@ -152,7 +152,23 @@ FROM
 GROUP BY customer_id
 HAVING SUM(amount) > 10000;
 
+-- 21. Find dates where total sales > 5,000
+SELECT 
+    order_date, SUM(amount)
+FROM
+    Orders
+GROUP BY order_date
+HAVING SUM(amount) > 5000;
 
+-- 22. Find products with total revenue > 20,000
+SELECT 
+    p.product_id, SUM(p.price * o.quantity) AS revenue
+FROM
+    products p
+        INNER JOIN
+    order_items o ON p.product_id = o.product_id
+GROUP BY p.product_id
+HAVING SUM(p.price * o.quantity) > 20000;
 
 
 
