@@ -170,7 +170,23 @@ FROM
 GROUP BY p.product_id
 HAVING SUM(p.price * o.quantity) > 20000;
 
+-- 23. Find customers with average order amount > 1000
+SELECT 
+    customer_id, AVG(amount)
+FROM
+    orders
+GROUP BY customer_id
+HAVING AVG(amount) > 1000;
 
+-- 24. Find categories having more than 10 products
+SELECT 
+    p.category, COUNT(o.quantity) AS products
+FROM
+    products p
+        INNER JOIN
+    order_items o ON p.product_id = o.product_id
+GROUP BY category
+HAVING COUNT(o.quantity) > 10;
 
 
 
