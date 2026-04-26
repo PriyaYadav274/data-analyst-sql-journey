@@ -188,7 +188,15 @@ FROM
 GROUP BY category
 HAVING COUNT(o.quantity) > 10;
 
-
+-- 25. Find cities where total sales is less than 2000
+SELECT 
+    c.city, SUM(o.amount) AS Total_Sales
+FROM
+    customers c
+        INNER JOIN
+    orders o ON c.customer_id = o.customer_id
+GROUP BY c.city
+HAVING SUM(o.amount) < 2000;
 
 
 
