@@ -199,7 +199,54 @@ GROUP BY c.city
 HAVING SUM(o.amount) < 2000;
 
 
+--  PART 3: INNER JOIN ⭐ (10 Q)
+-- 26. Get all orders with customer names
+SELECT 
+    o.order_id, o.order_date, o.amount, c.name
+FROM
+    customers c
+        JOIN
+    orders o ON c.customer_id = o.customer_id;
 
+-- 27. Get customer name and their order amounts
+SELECT 
+    c.name, o.amount AS Order_Amount
+FROM
+    customers c
+        INNER JOIN
+    orders o ON c.customer_id = o.customer_id;
+
+-- 28. Get product name with quantity sold
+SELECT 
+    p.product_name AS Products, SUM(O.quantity) AS Quantity_Sold
+FROM
+    products p
+        INNER JOIN
+    order_items o ON p.product_id = o.product_id
+GROUP BY p.product_name;
+
+-- 29. Get order details with product names
+SELECT 
+    o.order_id,
+    o.order_date,
+    o.amount,
+    p.product_name,
+    oi.quantity
+FROM
+    orders o
+        JOIN
+    order_items oi ON o.order_id = oi.order_id
+        JOIN
+    products p ON p.product_id = oi.product_id;
+
+-- 30. Get total sales per customer (using join)
+SELECT 
+    c.customer_id AS Customer, SUM(o.amount) AS Total_Sales
+FROM
+    customers c
+        INNER JOIN
+    orders o ON c.customer_id = o.customer_id
+GROUP BY c.customer_id;
 
 
 
