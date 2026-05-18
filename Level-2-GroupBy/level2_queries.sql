@@ -248,9 +248,32 @@ FROM
     orders o ON c.customer_id = o.customer_id
 GROUP BY c.customer_id;
 
+-- 31. Get total quantity sold per category
+SELECT 
+    p.category AS Category, SUM(o.quantity) AS Total_Quantity
+FROM
+    products p
+        INNER JOIN
+    order_items o ON p.product_id = o.product_id
+GROUP BY p.category;
 
+-- 32. Get all orders with product price
+SELECT 
+    o.order_id, o.order_date, o.amount, p.price, oi.quantity
+FROM
+    orders o
+        JOIN
+    order_items oi ON o.order_id = oi.order_id
+        JOIN
+    products p ON p.product_id = oi.product_id;
 
-
+-- 33. Get customer name, order id, and order amount
+SELECT 
+    c.name, o.order_id, o.amount
+FROM
+    customers c
+        INNER JOIN
+    orders o ON c.customer_id = o.customer_id;
 
 
 
